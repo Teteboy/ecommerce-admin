@@ -1,0 +1,19 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.logger = void 0;
+const logger = (req, res, next) => {
+    const start = Date.now();
+    // Log request
+    console.log(`${new Date().toISOString()} - ${req.method} ${req.originalUrl} - IP: ${req.ip}`);
+    // Log response
+    res.on('finish', () => {
+        const duration = Date.now() - start;
+        const statusCode = res.statusCode;
+        const statusColor = statusCode >= 400 ? '\x1b[31m' : statusCode >= 300 ? '\x1b[33m' : '\x1b[32m';
+        const resetColor = '\x1b[0m';
+        console.log(`${statusColor}${new Date().toISOString()} - ${req.method} ${req.originalUrl} - ${statusCode} - ${duration}ms${resetColor}`);
+    });
+    next();
+};
+exports.logger = logger;
+//# sourceMappingURL=logger.js.map
