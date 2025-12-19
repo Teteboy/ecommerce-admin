@@ -1,4 +1,4 @@
-# Hongfa E-Commerce Admin Dashboard
+# E-Commerce Admin Dashboard
 
 A comprehensive admin dashboard for managing e-commerce operations. This full-stack application provides a modern, responsive interface for managing products, orders, customers, inventory, and analytics.
 
